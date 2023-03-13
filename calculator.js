@@ -36,8 +36,11 @@ Array.from(buttons).forEach((button) => {
                 output = false;
                 bottomOutput.textContent = value
             } else {
-
-            bottomOutput.textContent += value
+                if(topOutput.textContent.includes(bottomOutput.textContent)) {
+                    bottomOutput.textContent = value     
+                } else {
+                    bottomOutput.textContent += value
+                }
             }
         } else if (value == "decimal") {
             
@@ -64,7 +67,7 @@ Array.from(buttons).forEach((button) => {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
                         topOutput.textContent = `${num} +`
-                        bottomOutput.textContent = null;
+                        bottomOutput.textContent = num;
         
                         firstValue = num
                         operation = "add"
@@ -89,7 +92,7 @@ Array.from(buttons).forEach((button) => {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
                         topOutput.textContent = `${num} -`
-                        bottomOutput.textContent = null;
+                        bottomOutput.textContent = num;
         
                         firstValue = num
                         operation = "subtract"
@@ -114,7 +117,7 @@ Array.from(buttons).forEach((button) => {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
                         topOutput.textContent = `${num} x`
-                        bottomOutput.textContent = null;
+                        bottomOutput.textContent = num;
         
                         firstValue = num
                         operation = "multiply"
@@ -139,7 +142,7 @@ Array.from(buttons).forEach((button) => {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
                         topOutput.textContent = `${num} ÷`
-                        bottomOutput.textContent = null;
+                        bottomOutput.textContent = num;
         
                         firstValue = num
                         operation = "divide"
