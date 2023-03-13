@@ -56,6 +56,9 @@ Array.from(buttons).forEach((button) => {
             }
         } else if (value == "plus") {
             if(bottomOutput.textContent) {
+                if(firstValue.charAt(firstValue.length - 1) == ".") {
+                    firstValue = firstValue.substring(0, firstValue.length - 1);
+                }
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
                     
