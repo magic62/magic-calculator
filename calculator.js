@@ -40,12 +40,16 @@ Array.from(buttons).forEach((button) => {
             bottomOutput.textContent += value
             }
         } else if (value == "decimal") {
+            
             if(bottomOutput.textContent) {
                 if(!topOutput.textContent) {
-                    firstValue += ".";
+                    if(!bottomOutput.textContent.includes(".")) {
+                        firstValue += ".";
+                    }
                 }
-
-                bottomOutput.textContent += "."
+                if(!bottomOutput.textContent.includes(".")) {
+                    bottomOutput.textContent += "."
+                }
             }
         } else if (value == "plus") {
             if(bottomOutput.textContent) {
