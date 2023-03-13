@@ -4,6 +4,7 @@ const bottomOutput = document.querySelectorAll(".bottom")[0]
 
 let firstValue = new String()
 let operation = new String()
+let output = false
 
 function operate(num1, num2, operation) {   
     let int1 = new Number(num1) 
@@ -31,8 +32,13 @@ Array.from(buttons).forEach((button) => {
             if(!topOutput.textContent) {
                 firstValue += value;
             }
+            if(output == true) {
+                output = false;
+                bottomOutput.textContent = value
+            } else {
 
             bottomOutput.textContent += value
+            }
         } else if (value == "decimal") {
             if(bottomOutput.textContent) {
                 if(!topOutput.textContent) {
@@ -43,77 +49,110 @@ Array.from(buttons).forEach((button) => {
             }
         } else if (value == "plus") {
             if(bottomOutput.textContent) {
-                if(topOutput.textContent && bottomOutput.textContent) {
-                    let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
-    
-                    topOutput.textContent = `${num} +`
-                    bottomOutput.textContent = null;
-    
-                    firstValue = num
-                    operation = "add"
-    
-                } else {
+                if(output == true) {
+                    firstValue = bottomOutput.textContent;
+                    
                     topOutput.textContent += `${firstValue} +`
                     bottomOutput.textContent = null
                     operation = "add"
+                } else {
+                    if(topOutput.textContent && bottomOutput.textContent) {
+                        let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
+        
+                        topOutput.textContent = `${num} +`
+                        bottomOutput.textContent = null;
+        
+                        firstValue = num
+                        operation = "add"
+        
+                    } else {
+                        topOutput.textContent += `${firstValue} +`
+                        bottomOutput.textContent = null
+                        operation = "add"
+                    }
                 }
             }
         } else if (value == "minus") {
             if(bottomOutput.textContent) {
-                if(topOutput.textContent && bottomOutput.textContent) {
-                    let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
-
-                    topOutput.textContent = `${num} -`
-                    bottomOutput.textContent = null;
-
-                    firstValue = num
-                    operation = "subtract"
-
-                } else {
+                if(output == true) {
+                    firstValue = bottomOutput.textContent;
+                    
                     topOutput.textContent += `${firstValue} -`
                     bottomOutput.textContent = null
                     operation = "subtract"
+                } else {
+                    if(topOutput.textContent && bottomOutput.textContent) {
+                        let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
+        
+                        topOutput.textContent = `${num} -`
+                        bottomOutput.textContent = null;
+        
+                        firstValue = num
+                        operation = "subtract"
+        
+                    } else {
+                        topOutput.textContent += `${firstValue} -`
+                        bottomOutput.textContent = null
+                        operation = "subtract"
+                    }
                 }
             }
         } else if (value == "multiply") {
             if(bottomOutput.textContent) {
-                if(topOutput.textContent && bottomOutput.textContent) {
-                    let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
-
-                    topOutput.textContent = `${num} x`
-                    bottomOutput.textContent = null;
-
-                    firstValue = num
-                    operation = "multiply"
-
-                } else {
+                if(output == true) {
+                    firstValue = bottomOutput.textContent;
+                    
                     topOutput.textContent += `${firstValue} x`
                     bottomOutput.textContent = null
                     operation = "multiply"
+                } else {
+                    if(topOutput.textContent && bottomOutput.textContent) {
+                        let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
+        
+                        topOutput.textContent = `${num} x`
+                        bottomOutput.textContent = null;
+        
+                        firstValue = num
+                        operation = "multiply"
+        
+                    } else {
+                        topOutput.textContent += `${firstValue} x`
+                        bottomOutput.textContent = null
+                        operation = "multiply"
+                    }
                 }
             }
         } else if (value == "divide") {
             if(bottomOutput.textContent) {
-                if(topOutput.textContent && bottomOutput.textContent) {
-                    let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
-
-                    topOutput.textContent = `${num} ÷`
-                    bottomOutput.textContent = null;
-
-                    firstValue = num
-                    operation = "divide"
-
-                } else {
+                if(output == true) {
+                    firstValue = bottomOutput.textContent;
+                    
                     topOutput.textContent += `${firstValue} ÷`
                     bottomOutput.textContent = null
                     operation = "divide"
+                } else {
+                    if(topOutput.textContent && bottomOutput.textContent) {
+                        let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
+        
+                        topOutput.textContent = `${num} ÷`
+                        bottomOutput.textContent = null;
+        
+                        firstValue = num
+                        operation = "divide"
+        
+                    } else {
+                        topOutput.textContent += `${firstValue} ÷`
+                        bottomOutput.textContent = null
+                        operation = "divide"
+                    }
                 }
             }
         } else if (value == "equals") {
             if(bottomOutput.textContent && topOutput.textContent) {
                 topOutput.textContent = null;
                 bottomOutput.textContent = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
-                firstValue = bottomOutput.textContent;
+                firstValue = new String();
+                output = true;
             }
         } else if (value == "delete") {
             if(!topOutput.textContent) {
