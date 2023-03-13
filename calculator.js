@@ -36,11 +36,7 @@ Array.from(buttons).forEach((button) => {
                 output = false;
                 bottomOutput.textContent = value
             } else {
-                if(topOutput.textContent.includes(bottomOutput.textContent)) {
-                    bottomOutput.textContent = value     
-                } else {
-                    bottomOutput.textContent += value
-                }
+                bottomOutput.textContent += value
             }
         } else if (value == "decimal") {
             
@@ -56,7 +52,7 @@ Array.from(buttons).forEach((button) => {
             }
         } else if (value == "plus") {
             if(bottomOutput.textContent) {
-                if(firstValue.charAt(firstValue.length - 1) == ".") {
+                if(firstValue.toString().charAt(firstValue.length - 1) == ".") {
                     firstValue = firstValue.substring(0, firstValue.length - 1);
                 }
                 if(output == true) {
@@ -66,6 +62,7 @@ Array.from(buttons).forEach((button) => {
                     bottomOutput.textContent = null
                     operation = "add"
                 } else {
+                    output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
@@ -84,6 +81,9 @@ Array.from(buttons).forEach((button) => {
             }
         } else if (value == "minus") {
             if(bottomOutput.textContent) {
+                if(firstValue.toString().charAt(firstValue.length - 1) == ".") {
+                    firstValue = firstValue.substring(0, firstValue.length - 1);
+                }
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
                     
@@ -91,6 +91,7 @@ Array.from(buttons).forEach((button) => {
                     bottomOutput.textContent = null
                     operation = "subtract"
                 } else {
+                    output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
@@ -108,6 +109,9 @@ Array.from(buttons).forEach((button) => {
                 }
             }
         } else if (value == "multiply") {
+            if(firstValue.toString().charAt(firstValue.length - 1) == ".") {
+                firstValue = firstValue.substring(0, firstValue.length - 1);
+            }
             if(bottomOutput.textContent) {
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
@@ -116,6 +120,7 @@ Array.from(buttons).forEach((button) => {
                     bottomOutput.textContent = null
                     operation = "multiply"
                 } else {
+                    output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
@@ -133,6 +138,9 @@ Array.from(buttons).forEach((button) => {
                 }
             }
         } else if (value == "divide") {
+            if(firstValue.toString().charAt(firstValue.length - 1) == ".") {
+                firstValue = firstValue.substring(0, firstValue.length - 1);
+            }
             if(bottomOutput.textContent) {
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
@@ -141,6 +149,7 @@ Array.from(buttons).forEach((button) => {
                     bottomOutput.textContent = null
                     operation = "divide"
                 } else {
+                    output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
                         let num = Math.round(operate(firstValue, bottomOutput.textContent, operation) * 100) / 100
         
