@@ -58,9 +58,12 @@ Array.from(buttons).forEach((button) => {
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
                     
-                    topOutput.textContent += `${firstValue} +`
-                    bottomOutput.textContent = null
-                    operation = "add"
+                    if(!topOutput.textContent == `${firstValue} +`) {
+                        topOutput.textContent += `${firstValue} +`
+                        bottomOutput.textContent = null
+                        operation = "add"
+                    }
+                    
                 } else {
                     output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
@@ -87,9 +90,11 @@ Array.from(buttons).forEach((button) => {
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
                     
-                    topOutput.textContent += `${firstValue} -`
-                    bottomOutput.textContent = null
-                    operation = "subtract"
+                    if(!topOutput.textContent == `${firstValue} -`) {
+                        topOutput.textContent += `${firstValue} -`
+                        bottomOutput.textContent = null
+                        operation = "subtract"
+                    }
                 } else {
                     output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
@@ -116,9 +121,11 @@ Array.from(buttons).forEach((button) => {
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
                     
-                    topOutput.textContent += `${firstValue} x`
-                    bottomOutput.textContent = null
-                    operation = "multiply"
+                    if(!topOutput.textContent == `${firstValue} x`) {
+                        topOutput.textContent += `${firstValue} x`
+                        bottomOutput.textContent = null
+                        operation = "multiply"
+                    }
                 } else {
                     output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
@@ -145,9 +152,11 @@ Array.from(buttons).forEach((button) => {
                 if(output == true) {
                     firstValue = bottomOutput.textContent;
                     
-                    topOutput.textContent += `${firstValue} ÷`
-                    bottomOutput.textContent = null
-                    operation = "divide"
+                    if(!topOutput.textContent == `${firstValue} ÷`) {
+                        topOutput.textContent += `${firstValue} ÷`
+                        bottomOutput.textContent = null
+                        operation = "divide"
+                    }
                 } else {
                     output = true
                     if(topOutput.textContent && bottomOutput.textContent) {
